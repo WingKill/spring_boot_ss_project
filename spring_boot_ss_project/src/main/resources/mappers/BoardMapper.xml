@@ -7,11 +7,22 @@
         	SELECT * FROM MVC_BOARD ORDER BY bgroup desc, bstep asc
         ]]>
     </select>
+    <select id="read" resultType="BoardVo">
+    	<![CDATA[
+        	select*from MVC_BOARD where bid=#{bnum}
+        ]]>
+    </select>    
 	<insert id="insert" parameterType="BoardVo">
 	    <![CDATA[
         	insert into mvc_board (bId, bName, bTitle, bContent, bdate, bHit, bGroup, bStep, bIndent) values (mvc_board_seq.nextval,#{bname},#{btitle},#{bcontent},sysdate,0,mvc_board_seq.currval,0,0)
         ]]>
 	</insert>
+	<!-- 테스트를 위한 insert -->
+<!-- 	<insert id="insert" parameterType="BoardVo">
+	    <![CDATA[
+        	insert into mvc_board (bId, bName, bTitle, bContent, bdate, bHit, bGroup, bStep, bIndent) values (#{bid},#{bname},#{btitle},#{bcontent},sysdate,0,#{bid},0,0)
+        ]]>
+	</insert> -->
 	<delete id="delete" parameterType="BoardVo">
 		 <![CDATA[
         	delete from mvc_board where bid = #{bid}

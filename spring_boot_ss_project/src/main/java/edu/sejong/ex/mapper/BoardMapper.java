@@ -11,4 +11,5 @@ public interface BoardMapper {
 	List<BoardVo> selectList();
 	int insert(BoardVo boardVo);
 	int delete(BoardVo boardVo);
+	BoardVo read(int bnum);
 }

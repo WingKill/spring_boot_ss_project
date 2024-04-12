@@ -45,5 +45,8 @@ class BoardServiceImplTest {
 		}
 	}
 
-
+	@Test
+	void testShowContent() {
+		log.info("=== 확인 === " + boardService.showContent(1));	
+	}
 }

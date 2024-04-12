@@ -45,5 +45,12 @@ class BoardMapperTest {
 			log.info("=====확인=====================" +  boardVo);			
 		}	
 	}
+	
+	@Test
+	void testRead() {
+		BoardVo boardVo = boardMapper.read(1);
+		System.out.println(boardVo);
+		log.info("=====확인=====================" + boardVo);
+	}
 
 }

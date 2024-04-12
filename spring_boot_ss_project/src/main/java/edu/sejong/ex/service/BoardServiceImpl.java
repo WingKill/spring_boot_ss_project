@@ -30,4 +30,9 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.delete(boardVo);
 	}
 
+	@Override
+	public BoardVo showContent(int bnum) {
+		return boardMapper.read(bnum);
+	}
+
 }

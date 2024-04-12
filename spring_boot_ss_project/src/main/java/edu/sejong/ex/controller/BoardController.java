@@ -31,6 +31,7 @@ public class BoardController {
 		return "/board/boardlist";
 	}
 	
+		
 	@PostMapping("/write.do")
 	public String addOne(BoardVo boardVo) {
 		log.info("addOne()..");
@@ -44,5 +45,11 @@ public class BoardController {
 		log.info("removeOne()..");
 		boardService.remove(bid, boardVo);
 		return "redirect:/board/list.do";
+	}
+	
+	@GetMapping("/content_view")
+	public String showOne(@RequestParam("bid")int bid, Model model) {
+		model.addAttribute("content_view", boardService.showContent(bid));
+		return "/board/content_view";
 	}
 }

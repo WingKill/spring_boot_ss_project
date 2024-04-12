@@ -8,4 +8,5 @@ public interface BoardService {
 	List<BoardVo> showList();
 	int add(BoardVo boardVo);
 	int remove(int bid, BoardVo boardVo);	
+	BoardVo showContent(int bnum);
 }
