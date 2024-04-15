@@ -49,8 +49,16 @@ class BoardMapperTest {
 	@Test
 	void testRead() {
 		BoardVo boardVo = boardMapper.read(1);
-		System.out.println(boardVo);
 		log.info("=====확인=====================" + boardVo);
 	}
-
+	
+	@Test
+	void testUpdate() {
+		BoardVo boardVo = new BoardVo();
+		boardVo.setBid(1);
+		boardVo.setBtitle("테스트제목2");
+		boardVo.setBcontent("테스트내용2");
+		boardMapper.update(boardVo);
+		log.info("=== 수정 확인 === " + boardMapper.read(1));
+	}
 }

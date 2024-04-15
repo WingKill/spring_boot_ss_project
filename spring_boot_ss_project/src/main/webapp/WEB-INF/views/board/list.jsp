@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/lotto/list.do">로또</a>
+                            <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/lotto/list">로또</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/rsp/rsp_game">가위바위보</a>
@@ -95,7 +95,7 @@
                                   	<td>${board.bdate}</td>
                                   	<td>${board.bhit}</td>
                                   	<td>
-                                  		<form action="${pageContext.request.contextPath}/board/delete.do" method="post">
+                                  		<form action="${pageContext.request.contextPath}/board/delete" method="post">
                                   			<input type="hidden" name="bid" value="${board.bid}">
                                   			<input type="submit" class="btn btn-success" value="삭제">
                                   		</form>

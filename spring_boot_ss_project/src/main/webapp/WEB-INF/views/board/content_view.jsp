@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 보기</title>
 </head>
 <body>
 	<h1>글 보기</h1>
-	<form action="modify_view.do" method="post">
+	<form action="${pageContext.request.contextPath}/board/modify_view" method="post">
 		<input type="hidden" name="bid" value="${content_view.bid}">	
 		<table border="1" style="width: 500; background-color: gray;">
 			<tr>
@@ -36,8 +36,8 @@
 			<tr>
 				<td style="background-color: pink" colspan="2">
 					<input type="submit" value="수정">
-					&nbsp;&nbsp;<a href="list.do">목록보기</a>
-					&nbsp;&nbsp;<a href="delete.do?bid=${content_view.bid}">삭제</a> 
+					&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/board/list">목록보기</a>
+					&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/board/delete?bid=${content_view.bid}">삭제</a> 
 					<%-- &nbsp;&nbsp;<a href="reply_view.do?bid=${content_view.bid}">답변</a> --%> 
 				</td>
 			</tr>

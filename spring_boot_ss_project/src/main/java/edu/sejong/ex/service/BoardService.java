@@ -9,4 +9,5 @@ public interface BoardService {
 	int add(BoardVo boardVo);
 	int remove(int bid, BoardVo boardVo);	
 	BoardVo showContent(int bnum);
+	int modify(BoardVo boardVo);
 }

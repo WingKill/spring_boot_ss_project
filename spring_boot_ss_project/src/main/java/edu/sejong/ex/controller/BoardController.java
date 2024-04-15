@@ -23,7 +23,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
-	@GetMapping("/list.do")
+	@GetMapping("/list")
 	public String BoardList(Model model) {
 		log.info("BoardList()..");
 		model.addAttribute("boards", boardService.showList());
@@ -32,24 +32,36 @@ public class BoardController {
 	}
 	
 		
-	@PostMapping("/write.do")
+	@PostMapping("/write")
 	public String addOne(BoardVo boardVo) {
 		log.info("addOne()..");
 		boardService.add(boardVo);
-		return "redirect:/board/list.do";
+		return "redirect:/board/list";
 	}
 	
-	@GetMapping("/delete.do")
-	@PostMapping("/delete.do")
+	@GetMapping("/delete")
+	@PostMapping("/delete")
 	public String removeOne(@RequestParam("bid")int bid ,BoardVo boardVo) {
 		log.info("removeOne()..");
 		boardService.remove(bid, boardVo);
-		return "redirect:/board/list.do";
+		return "redirect:/board/list";
 	}
 	
 	@GetMapping("/content_view")
 	public String showOne(@RequestParam("bid")int bid, Model model) {
 		model.addAttribute("content_view", boardService.showContent(bid));
 		return "/board/content_view";
+	}
+	
+	@PostMapping("/modify_view")
+	public String modifyThis(BoardVo boardVo,Model model) {
+		model.addAttribute("content_view", boardVo);
+		return "/board/modify_view";
+	}
+	
+	@PostMapping("modify")
+	public String modify(BoardVo boardVo) {
+		boardService.modify(boardVo);
+		return "redirect:/board/list";
 	}
 }
