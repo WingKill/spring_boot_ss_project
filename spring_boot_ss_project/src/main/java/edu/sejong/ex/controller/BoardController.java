@@ -35,7 +35,7 @@ public class BoardController {
 	@PostMapping("/write")
 	public String addOne(BoardVo boardVo) {
 		log.info("addOne()..");
-		boardService.add(boardVo);
+		boardService.addBoard(boardVo);
 		return "redirect:/board/list";
 	}
 	
@@ -43,31 +43,51 @@ public class BoardController {
 	@PostMapping("/delete")
 	public String removeOne(@RequestParam("bid")int bid ,BoardVo boardVo) {
 		log.info("removeOne()..");
-		boardService.remove(bid, boardVo);
+		boardService.removeBoard(bid, boardVo);
 		return "redirect:/board/list";
 	}
 	
 	@GetMapping("/content_view")
-	public String showOne(@RequestParam("bid")int bid, Model model) {
-		model.addAttribute("content_view", boardService.showContent(bid));
+	public String showView(BoardVo boardVo, Model model) {
+		log.info("showView()..");
+		boardService.uphit(boardVo);
+		model.addAttribute("content_view", boardService.showContent(boardVo.getBid()));
 		return "/board/content_view";
 	}
 	
 	@PostMapping("/modify_view")
-	public String modifyThis(BoardVo boardVo,Model model) {
-		model.addAttribute("content_view", boardVo);
+	public String modifyView(BoardVo boardVo, Model model) {
+		log.info("modifyView()..");
+		model.addAttribute("modify_view", boardVo);
 		return "/board/modify_view";
 	}
 	
-	@GetMapping("write_view")
-	public String writeOne() {
+	@GetMapping("/write_view")
+	public String writeView() {
+		log.info("writeView()..");
 		return "/board/write_view";
 	}
 	
-	@PostMapping("modify")
+	@PostMapping("/modify")
 	public String modify(BoardVo boardVo) {
-		boardService.modify(boardVo);
+		boardService.modifyBoard(boardVo);
 		return "redirect:/board/list";
 	}
 	
+	
+	//댓글 관련
+	
+	@GetMapping("/reply_view")
+	public String replyView(BoardVo boardVo, Model model) {
+		log.info("replyView()..");
+		model.addAttribute("reply_view", boardService.showContent(boardVo.getBid()));
+		return "/board/reply_view";
+	}
+	
+	@PostMapping("/reply")
+	public String reply(BoardVo boardVo) {
+		log.info("reply()..");
+		boardService.writeReply(boardVo);
+		return "redirect:/board/list";
+	}
 }

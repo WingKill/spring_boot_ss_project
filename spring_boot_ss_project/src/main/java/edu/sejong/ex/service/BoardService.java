@@ -6,8 +6,12 @@ import edu.sejong.ex.vo.BoardVo;
 
 public interface BoardService {
 	List<BoardVo> showList();
-	int add(BoardVo boardVo);
-	int remove(int bid, BoardVo boardVo);	
+	int addBoard(BoardVo boardVo);
+	int removeBoard(int bid, BoardVo boardVo);	
 	BoardVo showContent(int bnum);
-	int modify(BoardVo boardVo);
+	int modifyBoard(BoardVo boardVo);
+	
+	int uphit(BoardVo boardVo);
+	// 댓글
+	void writeReply(BoardVo boardVo);
 }

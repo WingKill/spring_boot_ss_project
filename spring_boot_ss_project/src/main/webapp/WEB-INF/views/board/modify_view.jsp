@@ -11,23 +11,23 @@
 <body>
 	<h1>글 수정창</h1>
 	<form action="${pageContext.request.contextPath}/board/modify" method="post">
-		<input type="hidden" name="bid" value="${content_view.bid}">	
+		<input type="hidden" name="bid" value="${modify_view.bid}">	
 		<table border="1" style="width: 500; background-color: gray;">
 			<tr>
 				<td style="background-color: pink">글 번호</td>
-				<td style="background-color: white">${content_view.bid}</td>
+				<td style="background-color: white">${modify_view.bid}</td>
 			</tr>
 			<tr>
 				<td style="background-color: pink">이름</td>
-				<td style="background-color: white"><input type="text" name="bname" size="50" value="${content_view.bname}" readonly="readonly"></td>
+				<td style="background-color: white"><input type="text" name="bname" size="50" value="${modify_view.bname}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td style="background-color: pink">제목</td>
-				<td style="background-color: white"><input type="text" name="btitle" size="50" value="${content_view.btitle}"></td>
+				<td style="background-color: white"><input type="text" name="btitle" size="50" value="${modify_view.btitle}"></td>
 			</tr>
 			<tr>
 				<td style="background-color: pink">내용</td>
-				<td style="background-color: white"><textarea name="bcontent" rows="10">${content_view.bcontent}</textarea></td>
+				<td style="background-color: white"><textarea name="bcontent" rows="10">${modify_view.bcontent}</textarea></td>
 			</tr>
 			<tr>
 				<td style="background-color: pink" colspan="2"><input type="submit" value="수정하기">&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/board/list">목록보기</a> </td>

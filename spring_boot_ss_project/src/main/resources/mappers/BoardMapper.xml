@@ -12,9 +12,10 @@
         	select*from MVC_BOARD where bid=#{bnum}
         ]]>
     </select>    
-	<insert id="insert" parameterType="BoardVo">
+	<insert id="insertBoard" parameterType="BoardVo">
 	    <![CDATA[
-        	insert into mvc_board (bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent) values (mvc_board_seq.nextval,#{bname},#{btitle},#{bcontent},sysdate,0,mvc_board_seq.currval,0,0)
+        	insert into mvc_board (bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent) 
+        	values (mvc_board_seq.nextval,#{bname},#{btitle},#{bcontent},sysdate,0,mvc_board_seq.currval,0,0)
         ]]>
 	</insert>
 	<!-- 테스트를 위한 insert -->
@@ -23,14 +24,33 @@
         	insert into mvc_board (bId, bName, bTitle, bContent, bdate, bHit, bGroup, bStep, bIndent) values (#{bid},#{bname},#{btitle},#{bcontent},sysdate,0,#{bid},0,0)
         ]]>
 	</insert> -->
-	<update id="update" parameterType="BoardVo">
+	<update id="updateBoard" parameterType="BoardVo">
 		<![CDATA[
         	update mvc_board set btitle=#{btitle}, bcontent=#{bcontent} where bid=#{bid}
         ]]>	
 	</update>
-	<delete id="delete" parameterType="BoardVo">
+	<!-- 조회수  -->
+	<update id="updateHit" parameterType="int">
+		<![CDATA[
+        	update mvc_board set bhit=bhit+1 where bid=#{bnum}
+        ]]>	
+	</update>	
+	<delete id="deleteBoard" parameterType="BoardVo">
 		 <![CDATA[
         	delete from mvc_board where bid = #{bid}
         ]]>
 	</delete>
+	
+	<!-- 댓글 입력, 수정 -->
+	<insert id="insertReply" parameterType="BoardVo">
+	    <![CDATA[
+        	insert into mvc_board (bid, bname, btitle, bcontent, bdate, bgroup, bstep, bindent) 
+			values (mvc_board_seq.nextval, #{bname} , #{btitle} , #{bcontent} , sysdate, #{bgroup}, #{bstep}+1 , #{bindent}+1 )
+        ]]>
+	</insert>
+	<update id="updateShape" parameterType="BoardVo">
+		<![CDATA[
+        	update mvc_board set bstep = bstep + 1 where bgroup = #{bgroup} and bstep > #{bstep}
+        ]]>	
+	</update>
 </mapper>

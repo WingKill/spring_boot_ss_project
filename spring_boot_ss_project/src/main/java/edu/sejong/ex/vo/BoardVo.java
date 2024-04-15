@@ -25,7 +25,7 @@ public class BoardVo {
 	private int bstep; // 세로
 	private int bindent; // 가로
 
-	// 입력 페이지에서 게시글 입력 버튼을 눌렀을 때 세팅하게 될 데이터들
+	// 수정 페이지에서 게시글 입력 버튼을 눌렀을 때 세팅하게 될 데이터들
 	public BoardVo(int bid, String bname, String btitle, String bcontent) {
 		this.bid = bid;
 		this.bname = bname;
@@ -33,4 +33,20 @@ public class BoardVo {
 		this.bcontent = bcontent;
 	}
 	
+	// 입력 페이지에서 게시글 입력 버튼을 눌렀을 때 세팅하게 될 데이터들
+	public BoardVo(String bname, String btitle, String bcontent) {
+		this.bname = bname;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+	}
+
+	// 답글 입력 페이지에서 답글 입력 버튼을 눌렀을 때 세팅하게 될 데이터들
+	public BoardVo(String bname, String btitle, String bcontent, int bgroup, int bstep, int bindent) {
+		this.bname = bname;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bgroup = bgroup;
+		this.bstep = bstep;
+		this.bindent = bindent;
+	}	
 }
