@@ -50,7 +50,6 @@ public class BoardController {
 	@GetMapping("/content_view")
 	public String showView(BoardVo boardVo, Model model) {
 		log.info("showView()..");
-		boardService.uphit(boardVo);
 		model.addAttribute("content_view", boardService.showContent(boardVo.getBid()));
 		return "/board/content_view";
 	}
@@ -73,14 +72,13 @@ public class BoardController {
 		boardService.modifyBoard(boardVo);
 		return "redirect:/board/list";
 	}
-	
-	
+
 	//댓글 관련
 	
 	@GetMapping("/reply_view")
 	public String replyView(BoardVo boardVo, Model model) {
 		log.info("replyView()..");
-		model.addAttribute("reply_view", boardService.showContent(boardVo.getBid()));
+		model.addAttribute("reply_view", boardService.showReply(boardVo));
 		return "/board/reply_view";
 	}
 	

@@ -11,7 +11,10 @@ public interface BoardService {
 	BoardVo showContent(int bnum);
 	int modifyBoard(BoardVo boardVo);
 	
+	// 조회수
 	int uphit(BoardVo boardVo);
+	BoardVo showReply(BoardVo boardVo);
+	
 	// 댓글
 	void writeReply(BoardVo boardVo);
 }

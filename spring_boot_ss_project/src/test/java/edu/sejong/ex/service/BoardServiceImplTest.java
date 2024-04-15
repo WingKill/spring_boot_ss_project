@@ -47,6 +47,8 @@ class BoardServiceImplTest {
 
 	@Test
 	void testShowContent() {
+		BoardVo boardVoOne = new BoardVo();
+		boardVoOne.setBid(1);
 		log.info("=== 확인 === " + boardService.showContent(1));	
 	}
 	
@@ -64,7 +66,6 @@ class BoardServiceImplTest {
 	void testUpHit() {
 		BoardVo boardVo = boardService.showContent(1);
 		log.info("=== 조회전 === " + boardVo.getBhit());
-		boardService.uphit(boardVo);
 		boardVo = boardService.showContent(1);
 		log.info("=== 조회후 === " + boardVo.getBhit());	
 	}
@@ -75,5 +76,12 @@ class BoardServiceImplTest {
 		for(BoardVo boardVo : boardService.showList()) {
 			log.info("=====확인=====================" +  boardVo);			
 		}	
+	}
+	
+	@Test
+	void testShowReply() {
+		BoardVo boardVo = new BoardVo();
+		boardVo.setBid(2);
+		log.info("=== 확인 === " + boardService.showReply(boardVo));	
 	}
 }

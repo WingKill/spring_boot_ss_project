@@ -38,6 +38,9 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVo showContent(int bnum) {
 		log.info("showContent()..");
+		BoardVo boardVo = new BoardVo();
+		boardVo.setBid(bnum);
+		uphit(boardVo);
 		return boardMapper.read(bnum);
 	}
 
@@ -53,11 +56,20 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.updateHit(boardVo.getBid());
 	}
 	
-	// 댓글 관련	
+	
+	// 댓글 관련
+	
+	
 	@Override
 	public void writeReply(BoardVo boardVo) {
 		log.info("writeReply()..");
 		boardMapper.updateShape(boardVo);
 		boardMapper.insertReply(boardVo);
+	}
+
+	@Override
+	public BoardVo showReply(BoardVo boardVo) {
+		int bnum = boardVo.getBid();
+		return boardMapper.read(bnum);
 	}
 }
