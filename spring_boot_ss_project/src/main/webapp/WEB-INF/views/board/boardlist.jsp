@@ -30,12 +30,12 @@
             <td>${board.bhit}</td>      
             <%-- <td><button type="button" onclick="location.href='/dept/remove?deptno=${dept.deptno}';">삭제</button></td> --%>
             <td>
-               <a href="${pageContext.request.contextPath}/board/delete.do?bid=${board.bid}"><button type="button">삭제</button></a>
+               <a href="${pageContext.request.contextPath}/board/delete?bid=${board.bid}"><button type="button">삭제</button></a>
             </td>
          </tr>
       </c:forEach>
       <tr>
-         <td colspan="6"><a href="${pageContext.request.contextPath}/write_view">글작성</a></td>
+         <td colspan="6"><a href="${pageContext.request.contextPath}/board/write_view">글작성</a></td>
       </tr>       
    </table>
 </body>

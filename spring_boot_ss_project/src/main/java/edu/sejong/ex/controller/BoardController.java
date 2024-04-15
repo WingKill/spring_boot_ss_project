@@ -59,9 +59,15 @@ public class BoardController {
 		return "/board/modify_view";
 	}
 	
+	@GetMapping("write_view")
+	public String writeOne() {
+		return "/board/write_view";
+	}
+	
 	@PostMapping("modify")
 	public String modify(BoardVo boardVo) {
 		boardService.modify(boardVo);
 		return "redirect:/board/list";
 	}
+	
 }
