@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import edu.sejong.ex.page.Criteria;
 import edu.sejong.ex.vo.BoardVo;
 import lombok.extern.slf4j.Slf4j;
 
@@ -83,5 +84,16 @@ class BoardServiceImplTest {
 		BoardVo boardVo = new BoardVo();
 		boardVo.setBid(2);
 		log.info("=== 확인 === " + boardService.showReply(boardVo));	
+	}
+	
+	@Test
+	void testGetTotal() {
+		log.info("=== 확인  개수 === " + boardService.getTotal());	
+	}
+	
+	@Test
+	void testShowListWithPaging() {
+		Criteria criteria = new Criteria();
+		log.info("=== 확인 === " + boardService.showListWithPaging(criteria));	
 	}
 }

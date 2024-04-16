@@ -14,7 +14,7 @@ public class PageVo {
 	private int startPage; // 화면에 보여지는 페이지 시작 번호
 	private int endPage; // 화면에 보여지는 페이지 끝 번호
 
-	private boolean pre; // 이전으로 이동 가능한 링크 표시
+	private boolean prev; // 이전으로 이동 가능한 링크 표시
 	private boolean next; // 다음으로 이동 가능한 링크 표시
 	private int total; // 전체 게시판 수
 	private Criteria criteria;
@@ -49,7 +49,7 @@ public class PageVo {
 		}
 
 		// 시작 번호가 1보다 큰 경우 존재
-		this.pre = this.startPage > 1;
+		this.prev = this.startPage > 1;
 
 		// realEnd가 끝번호(endPage)보다 큰 경우에만 존재
 		this.next = this.endPage < realEnd;

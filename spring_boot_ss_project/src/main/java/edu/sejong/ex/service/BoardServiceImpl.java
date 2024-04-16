@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.sejong.ex.mapper.BoardMapper;
+import edu.sejong.ex.page.Criteria;
 import edu.sejong.ex.vo.BoardVo;
 import lombok.extern.slf4j.Slf4j;
 
@@ -69,7 +70,22 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVo showReply(BoardVo boardVo) {
+		log.info("showReply()..");
 		int bnum = boardVo.getBid();
 		return boardMapper.read(bnum);
+	}
+
+	// 페이징 관련
+	
+	@Override
+	public int getTotal() {
+		log.info("getTotal()..");
+		return boardMapper.selectTotalCount();
+	}
+
+	@Override
+	public List<BoardVo> showListWithPaging(Criteria criteria) {
+		log.info("showListWithPaging()..");
+		return boardMapper.selectListWithPaging(criteria);
 	}
 }
