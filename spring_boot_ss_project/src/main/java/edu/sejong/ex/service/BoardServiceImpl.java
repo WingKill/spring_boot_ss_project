@@ -39,9 +39,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVo showContent(int bnum) {
 		log.info("showContent()..");
-		BoardVo boardVo = new BoardVo();
-		boardVo.setBid(bnum);
-		uphit(boardVo);
+		boardMapper.updateHit(bnum);
 		return boardMapper.read(bnum);
 	}
 
@@ -50,13 +48,6 @@ public class BoardServiceImpl implements BoardService {
 		log.info("modifyBoard()..");
 		return boardMapper.updateBoard(boardVo);
 	}
-
-	@Override
-	public int uphit(BoardVo boardVo) {
-		log.info("uphit()..");
-		return boardMapper.updateHit(boardVo.getBid());
-	}
-	
 	
 	// 댓글 관련
 	

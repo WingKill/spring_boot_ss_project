@@ -44,13 +44,13 @@
 		</tr>
 	</table>
 <c:if test="${pageMaker.prev}">
-	<a href="${pageContext.request.contextPath}/board/list2${pageMaker.makeQuery(pageMaker.startPage-1)}">&lt;&lt;</a>
+	<a href="${pageContext.request.contextPath}/board/list2${pageMaker.makeQuery(pageMaker.startPage-1)}">&lt;</a>
 </c:if>
 <c:forEach var="idx" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 	<a href="${pageContext.request.contextPath}/board/list2${pageMaker.makeQuery(idx)}">${idx}</a>
 </c:forEach>
 <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-	<a href="${pageContext.request.contextPath}/board/list2${pageMaker.makeQuery(pageMaker.endPage+1)}">&gt;&gt;</a>
+	<a href="${pageContext.request.contextPath}/board/list2${pageMaker.makeQuery(pageMaker.endPage+1)}">&gt;</a>
 </c:if>
 </body>
 </html>

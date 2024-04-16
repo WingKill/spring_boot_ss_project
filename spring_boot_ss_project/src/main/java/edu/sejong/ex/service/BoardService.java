@@ -9,11 +9,9 @@ public interface BoardService {
 	List<BoardVo> showList();
 	int addBoard(BoardVo boardVo);
 	int removeBoard(int bid, BoardVo boardVo);	
-	BoardVo showContent(int bnum);
+	BoardVo showContent(int bnum); // 조회수 처리가 내장되어 있음.
 	int modifyBoard(BoardVo boardVo);
 	
-	// 조회수
-	int uphit(BoardVo boardVo);
 	
 	// 댓글
 	void writeReply(BoardVo boardVo);
