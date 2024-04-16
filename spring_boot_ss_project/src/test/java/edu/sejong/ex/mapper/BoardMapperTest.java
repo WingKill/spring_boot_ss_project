@@ -91,4 +91,6 @@ class BoardMapperTest {
 			log.info("=====확인=====================" +  board);			
 		}
 	}
+	
+
 }

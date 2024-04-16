@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import edu.sejong.ex.page.Criteria;
 import edu.sejong.ex.vo.BoardVo;
 
 @Mapper
@@ -18,4 +19,8 @@ public interface BoardMapper {
 	// 댓글 관련
 	int updateShape(BoardVo boardVo);
 	int insertReply(BoardVo boardVo);
+	
+	// 페이징 관련
+	List<BoardVo> selectListWithPaging(Criteria cri);
+	int selectTotalCount();
 }
