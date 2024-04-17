@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.sejong.ex.one.BService2;
+import edu.sejong.ex.page.Criteria;
+import edu.sejong.ex.page.PageVo;
+import edu.sejong.ex.service.BoardService;
 
 
 /*
@@ -24,6 +27,16 @@ public class BController2 {
 	public String list(Model model) throws Exception{
 		System.out.println("list()..");
 		model.addAttribute("boards", bService2.selectBoardList());
+		return "/board/list";
+	}
+	
+	@RequestMapping("/list2")
+	public String list2(Model model, Criteria criteria) throws Exception{
+		System.out.println("list2()..");
+		//model.addAttribute("boards", bService2.selectBoardList());
+		model.addAttribute("boards", bService2.selectBoardPagingList(criteria));
+		int total = bService2.selectBoardTotal();
+		model.addAttribute("pageMaker", new PageVo(total, criteria));
 		return "/board/list";
 	}
 }

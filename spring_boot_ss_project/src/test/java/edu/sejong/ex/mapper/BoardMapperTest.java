@@ -27,6 +27,13 @@ class BoardMapperTest {
 			log.info("=====확인=====================" +  boardVo);			
 		}		
 	}
+	
+	@Test
+	void testSelectList2() {
+		for(BoardVo boardVo : boardMapper.selectList2()) {
+			log.info("=====확인=====================" +  boardVo.getBid());			
+		}		
+	}
 
 	@Test
 	void testInsertBoard() {

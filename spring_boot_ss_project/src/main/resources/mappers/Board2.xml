@@ -7,4 +7,24 @@
         	SELECT * FROM MVC_BOARD ORDER BY bgroup desc, bstep asc
         ]]>
 	</select>
+	<select id="selectBoardPagingList" resultType="BoardVo"><!-- edu.sejong.ex.vo.BoardVo -->
+    	<![CDATA[
+        	select * from 
+        	(
+			    select
+			        rownum rnum , A.*
+			    from 
+			    (select
+			     * 
+		    	 from mvc_board order by bgroup desc, bstep asc) A 
+		    	where rownum <= #{pageNum} * #{amount} 
+		    )
+			where rnum > (#{pageNum}-1) * #{amount}
+        ]]>
+	</select>
+	<select id="selectBoardTotal" resultType="int"><!-- edu.sejong.ex.vo.BoardVo -->
+    	<![CDATA[
+        	SELECT count(*) FROM MVC_BOARD
+        ]]>
+	</select>
 </mapper>

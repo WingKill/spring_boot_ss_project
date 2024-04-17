@@ -107,11 +107,22 @@
                         <div class="">
 	                        <nav aria-label="Page navigation example">
 								<ul class="pagination justify-content-center">
-									<li class="page-item disabled"><a class="page-link">Previous</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a></li>
+									<c:if test="${pageMaker.prev}">
+										<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/board/list2${pageMaker.makeQuery(pageMaker.startPage-1)}">Previous</a></li>
+									</c:if>
+									<c:forEach var="idx" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">										
+										<c:choose>
+											<c:when test="${pageMaker.criteria.pageNum == idx}">
+												<li class="page-item active"><a class="page-link" href="${pageContext.request.contextPath}/board/list2${pageMaker.makeQuery(idx)}">${idx}</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/board/list2${pageMaker.makeQuery(idx)}">${idx}</a></li>
+											</c:otherwise>							
+										</c:choose>
+									</c:forEach>
+									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+										<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/board/list2${pageMaker.makeQuery(pageMaker.endPage+1)}">Next</a></li>
+									</c:if>															
 								</ul>
 							</nav>
 						</div>
