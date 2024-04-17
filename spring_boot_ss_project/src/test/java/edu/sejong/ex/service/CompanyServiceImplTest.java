@@ -1,4 +1,4 @@
-package edu.sejong.ex.mapper;
+package edu.sejong.ex.service;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -6,26 +6,25 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import edu.sejong.ex.vo.EmpDeptVo;
+import edu.sejong.ex.vo.DeptEmpVo;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @SpringBootTest
-class EmpMapperTest {
+class CompanyServiceImplTest {
 
 	@Autowired
-	private EmpMapper empMapper;
-		
+	CompanyService companyService;
+	
 	@Test
 	void test() {
-		assertNotNull(empMapper);
+		assertNotNull(companyService);
 	}
 	
 	@Test
-	void testSelectJoinList1() {
-		for(EmpDeptVo empDept : empMapper.selectJoinList1()) {
-			log.info("정보 : " + empDept);
-		}		 
+	void testShowList() {
+		for(DeptEmpVo deptEmp : companyService.showList()) {
+				log.info("정보 : " + deptEmp);
+		}
 	}
-
 }
