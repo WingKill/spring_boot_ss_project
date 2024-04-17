@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import edu.sejong.ex.vo.DeptEmpVo;
 import edu.sejong.ex.vo.EmpDeptVo;
 import edu.sejong.ex.vo.EmpVo;
+import edu.sejong.ex.vo.SalGradeEmpVo;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -44,5 +45,13 @@ class CompanyMapperTest {
 		}
 	}
 	
+	@Test
+	void testSelectSalGradeEmpList() {
+		for(SalGradeEmpVo salGradeEmp : empMapper.selectSalGradeEmpList()) {
+			for(EmpVo emp : salGradeEmp.getEmpList()) {
+				log.info(salGradeEmp.getGrade() + "등급 : " + emp);
+			}
+		}
+	}
 
 }

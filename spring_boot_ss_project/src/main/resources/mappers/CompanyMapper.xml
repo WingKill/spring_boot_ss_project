@@ -2,6 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.sejong.ex.mapper.CompanyMapper">
+	<select id="selectDeptEmpList" resultMap="DeptEmpMap">
+    	<![CDATA[
+        	select * from emp, dept where emp.deptno = dept.deptno
+        ]]>       
+	</select>
+	<select id="selectSalGradeEmpList" resultMap="salGradeEmpMap">
+    	<![CDATA[
+        	select * from salgrade,emp where sal between losal and hisal
+        ]]>       
+	</select>
+		
+	<resultMap id="empMap" type="EmpVo">
+		<id column="empno" property="empNo" />
+		<result column="ename" property="ename" />
+		<result column="job" property="job" />
+		<result column="mgr" property="mgr" />
+		<result column="hiredate" property="hiredate" />
+		<result column="sal" property="sal" />
+		<result column="comm" property="comm" />
+		<result column="deptno" property="deptno" />  
+	</resultMap>
+	
+	<resultMap id="DeptEmpMap" type="DeptEmpVo">
+		<id column="deptno" property="deptno"/>
+    	<result column="dname" property="dname"/>
+   		<result column="loc" property="loc"/>
+   		<collection property="empList" resultMap="empMap" />			
+	</resultMap>
+	
+	<resultMap id="salGradeEmpMap" type="SalGradeEmpVo">
+		<id column="grade" property="grade"/>
+    	<result column="losal" property="losal"/>
+   		<result column="hisal" property="hisal"/>
+   		<collection property="empList" resultMap="empMap" />			
+	</resultMap>
+</mapper>
+
 <!-- 내가 작성한 코드 1
 	<select id="selectJoinList1" resultType="EmpDeptVo">
     	<![CDATA[
@@ -28,29 +65,3 @@
    		<result column="dname" property="dname"/>
 	</resultMap>
 -->
-
-	<select id="selectDeptEmpList" resultMap="DeptEmpMap">
-    	<![CDATA[
-        	select * from emp e, dept d 
-        	where e.deptno = d.deptno
-        ]]>       
-	</select>
-		
-	<resultMap id="empMap" type="EmpVo">
-		<id column="empno" property="empNo" />
-		<result column="ename" property="ename" />
-		<result column="job" property="job" />
-		<result column="mgr" property="mgr" />
-		<result column="hiredate" property="hiredate" />
-		<result column="sal" property="sal" />
-		<result column="comm" property="comm" />
-		<result column="deptno" property="deptno" />  
-	</resultMap>
-	
-	<resultMap id="DeptEmpMap" type="DeptEmpVo">
-		<id column="deptno" property="deptno"/>
-    	<result column="dname" property="dname"/>
-   		<result column="loc" property="loc"/>
-   		<collection property="empList" resultMap="empMap" />			
-	</resultMap>
-</mapper>

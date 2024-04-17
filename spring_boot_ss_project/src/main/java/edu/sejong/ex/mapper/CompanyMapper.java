@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import edu.sejong.ex.vo.DeptEmpVo;
 import edu.sejong.ex.vo.EmpDeptVo;
+import edu.sejong.ex.vo.SalGradeEmpVo;
 
 @Mapper
 public interface CompanyMapper {
