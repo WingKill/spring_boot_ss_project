@@ -13,9 +13,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class SalGradeEmpVo {
-	private int grade;
-	private int losal;
-	private int hisal;
+public class DeptSalGradeEmpVo {
+	private int deptno;
+	private String dname;
+	private String loc;
+	
+	private SalGradeVo salGrade;
 	private List<EmpVo> empList;
+	// private List<SalGradeEmpVo> empList;	
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.sejong.ex.vo.DeptEmpVo;
+import edu.sejong.ex.vo.DeptSalGradeEmpVo;
 import edu.sejong.ex.vo.EmpDeptVo;
 import edu.sejong.ex.vo.EmpVo;
 import edu.sejong.ex.vo.SalGradeEmpVo;
@@ -37,8 +38,7 @@ class CompanyMapperTest {
 	@Test
 	void testDeptEmpList() {
 		for(DeptEmpVo deptEmp : empMapper.selectDeptEmpList()) {
-			log.info("번호 :  " + deptEmp.getDeptno());
-			log.info("이름 : " + deptEmp.getDname());
+			log.info("번호 :  " + deptEmp);
 			for(EmpVo emp : deptEmp.getEmpList()) {
 				log.info("해당 정보 : " + emp);
 			}
@@ -48,10 +48,35 @@ class CompanyMapperTest {
 	@Test
 	void testSelectSalGradeEmpList() {
 		for(SalGradeEmpVo salGradeEmp : empMapper.selectSalGradeEmpList()) {
+			log.info("번호 :  " + salGradeEmp);
 			for(EmpVo emp : salGradeEmp.getEmpList()) {
 				log.info(salGradeEmp.getGrade() + "등급 : " + emp);
 			}
 		}
 	}
+	
+//	@Test
+//	void testSelectDeptSalGradeEmpList() {
+//		for(DeptSalGradeEmpVo DsgEmp : empMapper.selectDeptSalGradeEmpList()) {
+//			log.info("부서  : " + DsgEmp);
+//			for(SalGradeEmpVo salGradeEmp : DsgEmp.getEmpList()) {
+//				log.info("등급  : " + salGradeEmp);
+//				for(EmpVo emp : salGradeEmp.getEmpList()) {
+//					log.info("사원정보 : " + emp);
+//				}
+//			}
+//		}		
+//	}
+	
+	@Test
+	void testSelectDeptSalGradeEmpList() {
+		for (DeptSalGradeEmpVo dsgEmp : empMapper.selectDeptSalGradeEmpList()) {
+			log.info("부서  : " + dsgEmp);
+			log.info("등급 : " + dsgEmp.getSalGrade());
 
+			for (EmpVo emp : dsgEmp.getEmpList()) {
+				log.info("사원정보 : " + emp);
+			}
+		}
+	}
 }
