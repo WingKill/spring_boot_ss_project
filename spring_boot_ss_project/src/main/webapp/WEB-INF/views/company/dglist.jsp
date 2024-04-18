@@ -108,7 +108,7 @@
 											<td>${member.dname}</td>
 											<td>${emp.ename}</td>
 											<td>${emp.sal}</td>
-											<td>${member.salGrade.grade}</td>
+											<td>${emp.salGrade.grade}</td>
 										</tr>
 									</c:forEach>
 								</c:forEach>
