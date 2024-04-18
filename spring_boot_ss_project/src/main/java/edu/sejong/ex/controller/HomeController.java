@@ -11,36 +11,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/company")
-public class CompanyController {
+@RequestMapping("/bshoper")
+public class HomeController {
 	/*
 	 * 예시파일을 사용하는 상태 
 	 */ 
 	
 	@Autowired
 	private CompanyService companyService;
-
-	@GetMapping("/list")
-	public String companyList(Model model) {
-		log.info("companyList()..");
-		model.addAttribute("lists", companyService.showList());
-		//return "/board/list";
-		return "/company/list";
-	}
-	
-	@GetMapping("/glist")
-	public String companyListWithGrade(Model model) {
-		log.info("companyListWithGrade()..");
-		model.addAttribute("lists", companyService.showListWithGrade());
-		return "/company/glist";
-	}
-	
-	@GetMapping("/dglist")
-	public String companyListWithDG(Model model) {
-		log.info("companyListWithDG()..");
-		model.addAttribute("lists", companyService.showListDS());
-		return "/company/dglist";
-	}
 	
 	@GetMapping("")
 	public String companyListAll(Model model) {

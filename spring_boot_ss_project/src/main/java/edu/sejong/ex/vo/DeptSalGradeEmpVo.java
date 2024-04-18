@@ -18,7 +18,5 @@ public class DeptSalGradeEmpVo {
 	private String dname;
 	private String loc;
 	
-	private SalGradeVo salGrade;
 	private List<EmpVo> empList;
-	// private List<SalGradeEmpVo> empList;	
 }

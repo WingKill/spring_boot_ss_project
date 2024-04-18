@@ -34,5 +34,9 @@ public class EmpVo {
 	private String comm;
 	private int deptno;
 	
+	private SalGradeVo salGrade;
 	
+	public int getRandomNum() {
+		return (int)(Math.random()*6 + 1);
+	}
 }

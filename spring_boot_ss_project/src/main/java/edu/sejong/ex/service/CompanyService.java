@@ -12,4 +12,5 @@ public interface CompanyService {
 	List<SalGradeEmpVo> showListWithGrade();
 	
 	List<DeptSalGradeEmpVo> showListDS();
+
 }

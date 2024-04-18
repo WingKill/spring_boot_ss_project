@@ -61,10 +61,9 @@ class CompanyServiceImplTest {
 	void testShowListDS() {
 		for (DeptSalGradeEmpVo dsgEmp : companyService.showListDS()) {
 			log.info("부서  : " + dsgEmp);
-			log.info("등급 : " + dsgEmp.getSalGrade());
-
 			for (EmpVo emp : dsgEmp.getEmpList()) {
 				log.info("사원정보 : " + emp);
+				log.info("등급 : " + emp.getSalGrade().getGrade());
 			}
 		}		
 	}

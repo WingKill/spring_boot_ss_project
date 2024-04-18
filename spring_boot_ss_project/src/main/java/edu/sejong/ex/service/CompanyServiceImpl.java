@@ -30,5 +30,6 @@ public class CompanyServiceImpl implements CompanyService {
 	public List<DeptSalGradeEmpVo> showListDS() {
 		return companyMapper.selectDeptSalGradeEmpList();
 	}
+	
 
 }

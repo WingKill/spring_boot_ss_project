@@ -28,6 +28,7 @@
 		<result column="sal" property="sal" />
 		<result column="comm" property="comm" />
 		<result column="deptno" property="deptno" />  
+		<association property="salGrade" resultMap="salGradeMap" />
 	</resultMap>
 	
 	<resultMap id="salGradeMap" type="SalGradeVo">
@@ -63,7 +64,6 @@
 		<id column="deptno" property="deptno"/>
     	<result column="dname" property="dname"/>
    		<result column="loc" property="loc"/>
-   		<association property="salGrade" resultMap="salGradeMap" />
    		<collection property="empList" resultMap="empMap" />
 	</resultMap>
 </mapper>
