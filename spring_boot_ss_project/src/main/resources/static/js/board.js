@@ -31,7 +31,7 @@ let boardService = (function() {
 	function getBoard(id) {
 		$.ajax({
 			type : "GET",
-			url : "${pageContext.request.contextPath}/boards/" + id,
+			url : "/boards/" + id,
 			success : function(result) {
 				console.log(result);
 			},
@@ -44,7 +44,7 @@ let boardService = (function() {
 	function deleteBoard(id){
 		$.ajax({
 			type:"DELETE",
-			url: "${pageContext.request.contextPath}/boards/" + id,
+			url: "/boards/" + id,
 			success: function(result){
 				console.log(result);
 			},
