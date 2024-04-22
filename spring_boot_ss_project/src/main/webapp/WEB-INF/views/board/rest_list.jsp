@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/board.js"></script>
 <script type="text/javascript">
 	/* 
 	$.ajax({
@@ -22,22 +23,6 @@
 	}); 
 	*/
 	$(document).ready(function(){
-		
-		
-		
-		function boardList(){
-			$.ajax({
-				type:"GET",
-				url: "${pageContext.request.contextPath}/boards/list",
-				success: function(result){
-					console.log(result);
-					makeList(result);
-				},
-				error: function(e){
-					console.log(e);
-				}
-			});
-		}
 		
 		function makeList(result) {
 			let htmls = "";
@@ -80,32 +65,13 @@
 			
 		}
 		
+		//boardService.list(makeList);
 		
-		function getBoard(id){
-			$.ajax({
-				type:"GET",
-				url: "${pageContext.request.contextPath}/boards/" + id,
-				success: function(result){
-					console.log(result);
-				},
-				error: function(e){
-					console.log(e);
-				}
-			});
-		}
+		boardService.get(328);
+		boardService.del(348);
+
 		
-		function deleteBoard(id){
-			$.ajax({
-				type:"DELETE",
-				url: "${pageContext.request.contextPath}/boards/" + id,
-				success: function(result){
-					console.log(result);
-				},
-				error: function(e){
-					console.log(e);
-				}
-			});
-		}
+
 		
 		function writeBoard(board){
 			
@@ -178,13 +144,6 @@
 		});
 	});
 </script>
-<script type="text/javascript">
-	$(document).ready(function(){
-
-	});
-</script>
-
-
 </head>
 <body>
 	<table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">

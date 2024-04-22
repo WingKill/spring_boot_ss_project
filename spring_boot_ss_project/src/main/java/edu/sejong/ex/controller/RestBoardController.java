@@ -126,7 +126,5 @@ public class RestBoardController {
 		mv.setViewName("/board/rest_list");				
 		return mv;
 	}
-	
 
-	
 }

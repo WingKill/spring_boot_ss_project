@@ -10,12 +10,53 @@
 
 console.log("board Module..");
 
-let boardService = function() {
-	function test() {
-		console.log("테스트입니다.");
+let boardService = (function() {
+
+	function boardList(callback) {
+		$.ajax({
+			type : "GET",
+			url : "/boards/list",
+			success : function(result) {
+				console.log(result);
+				if (callback) {
+					callback(result);
+				}
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	}
+
+	function getBoard(id) {
+		$.ajax({
+			type : "GET",
+			url : "${pageContext.request.contextPath}/boards/" + id,
+			success : function(result) {
+				console.log(result);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	}
+
+	function deleteBoard(id){
+		$.ajax({
+			type:"DELETE",
+			url: "${pageContext.request.contextPath}/boards/" + id,
+			success: function(result){
+				console.log(result);
+			},
+			error: function(e){
+				console.log(e);
+			}
+		});
 	}
 	
-	return { 
-		test : test 
-	};	
-}
+	return {
+		list : boardList,
+		get : getBoard,
+		del : deleteBoard,
+	};
+})();
