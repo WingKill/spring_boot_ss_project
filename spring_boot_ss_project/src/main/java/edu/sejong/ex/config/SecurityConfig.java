@@ -2,6 +2,7 @@ package edu.sejong.ex.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -26,5 +27,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.withUser("member").password("{noop}member").roles("USER")
 		.and()
 		.withUser("admin").password("{noop}admin").roles("ADMIN");
+	}
+	
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		// 우선 CSRF설정을 해제한다.
+		// 초기 개발시만 해주는게 좋다.
+		http.csrf().disable();
+		
+		// 권한 설정
+		http.authorizeRequests()
+		.antMatchers("/user/**").hasAnyRole("USER")
+		.antMatchers("/admin/**").hasAnyRole("ADMIN")
+		.antMatchers("/company/list").hasAnyRole("ADMIN")
+		.antMatchers("/**").permitAll();
+		
+		http.formLogin(); // 스프링 시큐리티에 있는 기본 로그인 폼을 사용하겠다.
 	}
 }
