@@ -65,10 +65,10 @@
 			
 		}
 		
-		//boardService.list(makeList);
+		boardService.list(makeList);
 		
-		boardService.get(328);
-		boardService.del(348);
+		//boardService.get(328);
+		//boardService.del(348);
 
 		
 
