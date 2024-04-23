@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.sejong.ex.vo.BoardVo;
+import edu.sejong.ex.vo.BoardVO;
 
 @Service
 public class BService1 {
@@ -15,7 +15,7 @@ public class BService1 {
 	//private SqlSession sqlSession;
 	private SqlSessionTemplate sqlSession;
 	
-	public List<BoardVo> selectBoardList() throws Exception{
+	public List<BoardVO> selectBoardList() throws Exception{
 		IBDao dao = sqlSession.getMapper(IBDao.class);
 		return dao.listDao();
 	}

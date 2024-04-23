@@ -2,15 +2,15 @@ package edu.sejong.ex.service;
 
 import java.util.List;
 
-import edu.sejong.ex.vo.DeptEmpVo;
-import edu.sejong.ex.vo.DeptSalGradeEmpVo;
-import edu.sejong.ex.vo.SalGradeEmpVo;
+import edu.sejong.ex.vo.DeptEmpVO;
+import edu.sejong.ex.vo.DeptSalGradeEmpVO;
+import edu.sejong.ex.vo.SalGradeEmpVO;
 
 public interface CompanyService {
-	List<DeptEmpVo> showList();
+	List<DeptEmpVO> showList();
 	
-	List<SalGradeEmpVo> showListWithGrade();
+	List<SalGradeEmpVO> showListWithGrade();
 	
-	List<DeptSalGradeEmpVo> showListDS();
+	List<DeptSalGradeEmpVO> showListDS();
 
 }

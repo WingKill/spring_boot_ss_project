@@ -2,13 +2,13 @@ package edu.sejong.ex.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import edu.sejong.ex.vo.UserVo;
+import edu.sejong.ex.vo.UserVO;
 
 @Mapper
 public interface UserMapper {
-	UserVo selectUserAuths(String username);
+	UserVO selectUserAuths(String username);
 
-	public int insertUser(UserVo userVo);
+	public int insertUser(UserVO userVo);
 
-	public void insertAuthorities(UserVo userVo);
+	public void insertAuthority(UserVO userVo);
 }

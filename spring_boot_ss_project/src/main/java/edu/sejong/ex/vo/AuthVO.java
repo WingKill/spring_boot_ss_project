@@ -11,8 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class SalGradeVo {
-	private int grade;
-	private int losal;
-	private int hisal;
+public class AuthVO {
+	private String userName;
+	private String authority;
 }

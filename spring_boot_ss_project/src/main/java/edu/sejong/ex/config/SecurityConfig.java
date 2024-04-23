@@ -1,16 +1,23 @@
 package edu.sejong.ex.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import edu.sejong.ex.security.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity // 스프링 시큐리티 필터가 스프링 필터체인에 등록됨.
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
@@ -20,13 +27,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**", "/lib/**");
 	}
 
-	// 테스트용 유저 만들기(인메모리 방식)
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-		.withUser("member").password("{noop}member").roles("USER")
-		.and()
-		.withUser("admin").password("{noop}admin").roles("ADMIN");
+		// 테스트용 유저 만들기(인메모리 방식)
+//		auth.inMemoryAuthentication()
+//		.withUser("member").password("{noop}member").roles("USER")
+//		.and()
+//		.withUser("admin").password("{noop}admin").roles("ADMIN");
+		
+		auth.userDetailsService(customUserDetailsService)
+			.passwordEncoder(new BCryptPasswordEncoder()); // 암호화 방식		
 	}
 	
 	
@@ -48,9 +59,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// http.formLogin(); 
 		http.formLogin()
 			.loginPage("/login")
+			//.loginPage("/elogin")
 			.usernameParameter("id")
 			.passwordParameter("pw")
-			.defaultSuccessUrl("/board/list2")
+			//.defaultSuccessUrl("/board/list2")
+			.defaultSuccessUrl("/index")
 			.permitAll(); // 모든 사람에게 허용하겠다는 의미.
 	}
 }

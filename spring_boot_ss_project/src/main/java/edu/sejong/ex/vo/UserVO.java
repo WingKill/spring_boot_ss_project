@@ -13,14 +13,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class UserVo {
+public class UserVO {
 	private String userName;
 	private String password;
 	private String enabled;
 	
-	private List<AuthVo> authorities;
+	private List<AuthVO> authorities;
 
-	public UserVo(String userName, String password) {
+	public UserVO(String userName, String password) {
 		this.userName = userName;
 		this.password = password;
 	}	

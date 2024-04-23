@@ -1,7 +1,5 @@
 package edu.sejong.ex.vo;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,10 +11,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class DeptSalGradeEmpVo {
-	private int deptno;
-	private String dname;
-	private String loc;
-	
-	private List<EmpVo> empList;
+public class SalGradeVO {
+	private int grade;
+	private int losal;
+	private int hisal;
 }

@@ -15,11 +15,9 @@
 	</insert>
 	
 	<insert id="insertAuthorities" parameterType="UserVo">
-    	<foreach collection="authorities" item="auth">
-	        <![CDATA[
-	            INSERT INTO authorities(username, authority) VALUES (#{userName}, #{auth.authority})
-	        ]]>
-	    </foreach>      
+        <![CDATA[
+            INSERT INTO authorities(username, authority) VALUES (#{userName}, 'ROLE_USER')
+        ]]>
 	</insert>
 			
 	<resultMap id="authMap" type="AuthVo">

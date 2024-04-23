@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.sejong.ex.mapper.CompanyMapper;
-import edu.sejong.ex.vo.DeptEmpVo;
-import edu.sejong.ex.vo.DeptSalGradeEmpVo;
-import edu.sejong.ex.vo.SalGradeEmpVo;
+import edu.sejong.ex.vo.DeptEmpVO;
+import edu.sejong.ex.vo.DeptSalGradeEmpVO;
+import edu.sejong.ex.vo.SalGradeEmpVO;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
@@ -17,17 +17,17 @@ public class CompanyServiceImpl implements CompanyService {
 	CompanyMapper companyMapper;
 	
 	@Override
-	public List<DeptEmpVo> showList() {
+	public List<DeptEmpVO> showList() {
 		return companyMapper.selectDeptEmpList();
 	}
 
 	@Override
-	public List<SalGradeEmpVo> showListWithGrade() {
+	public List<SalGradeEmpVO> showListWithGrade() {
 		return companyMapper.selectSalGradeEmpList();
 	}
 
 	@Override
-	public List<DeptSalGradeEmpVo> showListDS() {
+	public List<DeptSalGradeEmpVO> showListDS() {
 		return companyMapper.selectDeptSalGradeEmpList();
 	}
 	

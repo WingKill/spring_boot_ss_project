@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import edu.sejong.ex.vo.DeptEmpVo;
-import edu.sejong.ex.vo.DeptSalGradeEmpVo;
-import edu.sejong.ex.vo.EmpVo;
-import edu.sejong.ex.vo.SalGradeEmpVo;
+import edu.sejong.ex.vo.DeptEmpVO;
+import edu.sejong.ex.vo.DeptSalGradeEmpVO;
+import edu.sejong.ex.vo.EmpVO;
+import edu.sejong.ex.vo.SalGradeEmpVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -26,9 +26,9 @@ class CompanyServiceImplTest {
 	
 	@Test
 	void testShowList() {
-		for(DeptEmpVo deptEmp : companyService.showList()) {
+		for(DeptEmpVO deptEmp : companyService.showList()) {
 			log.info("정보 : " + deptEmp);
-			for(EmpVo emp : deptEmp.getEmpList()) {
+			for(EmpVO emp : deptEmp.getEmpList()) {
 				log.info("리스트 : " + emp);
 			}
 		}
@@ -36,9 +36,9 @@ class CompanyServiceImplTest {
 	
 	@Test
 	void testShowListWithGrade() {
-		for(SalGradeEmpVo salEmpVo : companyService.showListWithGrade()) {
+		for(SalGradeEmpVO salEmpVo : companyService.showListWithGrade()) {
 			log.info("정보 : " + salEmpVo);
-			for(EmpVo emp : salEmpVo.getEmpList()) {
+			for(EmpVO emp : salEmpVo.getEmpList()) {
 				log.info("리스트 : " + emp);
 			}
 		}
@@ -59,9 +59,9 @@ class CompanyServiceImplTest {
 	
 	@Test
 	void testShowListDS() {
-		for (DeptSalGradeEmpVo dsgEmp : companyService.showListDS()) {
+		for (DeptSalGradeEmpVO dsgEmp : companyService.showListDS()) {
 			log.info("부서  : " + dsgEmp);
-			for (EmpVo emp : dsgEmp.getEmpList()) {
+			for (EmpVO emp : dsgEmp.getEmpList()) {
 				log.info("사원정보 : " + emp);
 				log.info("등급 : " + emp.getSalGrade().getGrade());
 			}

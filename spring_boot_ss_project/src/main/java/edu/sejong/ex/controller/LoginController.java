@@ -16,4 +16,18 @@ public class LoginController {
       
       return "login/login";
    }
+   
+//   @GetMapping("/elogin")
+//   public String elogin(Model model) {
+//      log.info("elogin()..");
+//      
+//      return "login/elogin";
+//   }
+   
+   @GetMapping("/logout")
+   public String logout(Model model) {
+	   log.info("logout()..");
+	   
+	   return "redirect:/elogin";
+   }
 }

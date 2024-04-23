@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.sejong.ex.mapper.BoardMapper;
 import edu.sejong.ex.page.Criteria;
-import edu.sejong.ex.vo.BoardVo;
+import edu.sejong.ex.vo.BoardVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -18,33 +18,33 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper boardMapper;
 	
 	@Override
-	public List<BoardVo> showList() {
+	public List<BoardVO> showList() {
 		log.info("showList()..");
 		return boardMapper.selectList();
 	}
 
 	@Override
-	public int addBoard(BoardVo boardVo) {
+	public int addBoard(BoardVO boardVo) {
 		log.info("add()..");
 		return boardMapper.insertBoard(boardVo);
 	}
 
 	@Override
-	public int removeBoard(int bid, BoardVo boardVo) {
+	public int removeBoard(int bid, BoardVO boardVo) {
 		log.info("remove()..");
 		boardVo.setBid(bid);
 		return boardMapper.deleteBoard(boardVo);
 	}
 
 	@Override
-	public BoardVo showContent(int bnum) {
+	public BoardVO showContent(int bnum) {
 		log.info("showContent()..");
 		boardMapper.updateHit(bnum);
 		return boardMapper.read(bnum);
 	}
 
 	@Override
-	public int modifyBoard(BoardVo boardVo) {
+	public int modifyBoard(BoardVO boardVo) {
 		log.info("modifyBoard()..");
 		return boardMapper.updateBoard(boardVo);
 	}
@@ -53,14 +53,14 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	@Override
-	public void writeReply(BoardVo boardVo) {
+	public void writeReply(BoardVO boardVo) {
 		log.info("writeReply()..");
 		boardMapper.updateShape(boardVo);
 		boardMapper.insertReply(boardVo);
 	}
 
 	@Override
-	public BoardVo showReply(BoardVo boardVo) {
+	public BoardVO showReply(BoardVO boardVo) {
 		log.info("showReply()..");
 		int bnum = boardVo.getBid();
 		return boardMapper.read(bnum);
@@ -75,7 +75,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVo> showListWithPaging(Criteria criteria) {
+	public List<BoardVO> showListWithPaging(Criteria criteria) {
 		log.info("showListWithPaging()..");
 		return boardMapper.selectListWithPaging(criteria);
 	}

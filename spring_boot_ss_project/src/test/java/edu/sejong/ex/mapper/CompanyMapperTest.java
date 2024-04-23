@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import edu.sejong.ex.vo.DeptEmpVo;
-import edu.sejong.ex.vo.DeptSalGradeEmpVo;
-import edu.sejong.ex.vo.EmpDeptVo;
-import edu.sejong.ex.vo.EmpVo;
-import edu.sejong.ex.vo.SalGradeEmpVo;
+import edu.sejong.ex.vo.DeptEmpVO;
+import edu.sejong.ex.vo.DeptSalGradeEmpVO;
+import edu.sejong.ex.vo.EmpDeptVO;
+import edu.sejong.ex.vo.EmpVO;
+import edu.sejong.ex.vo.SalGradeEmpVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -30,16 +30,16 @@ class CompanyMapperTest {
 	@Disabled
 	@Test
 	void testEmpDeptList() {
-		for(EmpDeptVo empDept : empMapper.selectEmpDeptList()) {
+		for(EmpDeptVO empDept : empMapper.selectEmpDeptList()) {
 			log.info("정보 : " + empDept);
 		}		 		 
 	}
 	
 	@Test
 	void testDeptEmpList() {
-		for(DeptEmpVo deptEmp : empMapper.selectDeptEmpList()) {
+		for(DeptEmpVO deptEmp : empMapper.selectDeptEmpList()) {
 			log.info("번호 :  " + deptEmp);
-			for(EmpVo emp : deptEmp.getEmpList()) {
+			for(EmpVO emp : deptEmp.getEmpList()) {
 				log.info("해당 정보 : " + emp);
 			}
 		}
@@ -47,9 +47,9 @@ class CompanyMapperTest {
 	
 	@Test
 	void testSelectSalGradeEmpList() {
-		for(SalGradeEmpVo salGradeEmp : empMapper.selectSalGradeEmpList()) {
+		for(SalGradeEmpVO salGradeEmp : empMapper.selectSalGradeEmpList()) {
 			log.info("번호 :  " + salGradeEmp);
-			for(EmpVo emp : salGradeEmp.getEmpList()) {
+			for(EmpVO emp : salGradeEmp.getEmpList()) {
 				log.info(salGradeEmp.getGrade() + "등급 : " + emp);
 			}
 		}
@@ -70,9 +70,9 @@ class CompanyMapperTest {
 	
 	@Test
 	void testSelectDeptSalGradeEmpList() {
-		for (DeptSalGradeEmpVo dsgEmp : empMapper.selectDeptSalGradeEmpList()) {
+		for (DeptSalGradeEmpVO dsgEmp : empMapper.selectDeptSalGradeEmpList()) {
 			log.info("부서  : " + dsgEmp);
-			for (EmpVo emp : dsgEmp.getEmpList()) {
+			for (EmpVO emp : dsgEmp.getEmpList()) {
 				log.info("사원정보 : " + emp);
 				log.info("등급 : " + emp.getSalGrade().getGrade());
 			}

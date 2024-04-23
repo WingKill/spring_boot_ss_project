@@ -4,20 +4,20 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import edu.sejong.ex.vo.DeptEmpVo;
-import edu.sejong.ex.vo.DeptSalGradeEmpVo;
-import edu.sejong.ex.vo.EmpDeptVo;
-import edu.sejong.ex.vo.SalGradeEmpVo;
+import edu.sejong.ex.vo.DeptEmpVO;
+import edu.sejong.ex.vo.DeptSalGradeEmpVO;
+import edu.sejong.ex.vo.EmpDeptVO;
+import edu.sejong.ex.vo.SalGradeEmpVO;
 
 @Mapper
 public interface CompanyMapper {
 	// 내가 작성했던 코드 내역
-	List<EmpDeptVo> selectEmpDeptList();
+	List<EmpDeptVO> selectEmpDeptList();
 	
 	
-	List<DeptEmpVo> selectDeptEmpList();
+	List<DeptEmpVO> selectDeptEmpList();
 	
-	List<SalGradeEmpVo> selectSalGradeEmpList(); 
+	List<SalGradeEmpVO> selectSalGradeEmpList(); 
 	
-	List<DeptSalGradeEmpVo> selectDeptSalGradeEmpList();
+	List<DeptSalGradeEmpVO> selectDeptSalGradeEmpList();
 }

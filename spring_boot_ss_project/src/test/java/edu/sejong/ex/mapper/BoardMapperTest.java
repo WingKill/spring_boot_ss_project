@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import edu.sejong.ex.vo.BoardVo;
+import edu.sejong.ex.vo.BoardVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -23,38 +23,38 @@ class BoardMapperTest {
 	
 	@Test
 	void testSelectList() {
-		for(BoardVo boardVo : boardMapper.selectList()) {
+		for(BoardVO boardVo : boardMapper.selectList()) {
 			log.info("=====확인=====================" +  boardVo);			
 		}		
 	}
 
 	@Test
 	void testInsertBoard() {
-		boardMapper.insertBoard(new BoardVo("user","hello","hi"));
-		for(BoardVo boardVo : boardMapper.selectList()) {
+		boardMapper.insertBoard(new BoardVO("user","hello","hi"));
+		for(BoardVO boardVo : boardMapper.selectList()) {
 			log.info("=====확인=====================" +  boardVo);			
 		}	
 	}
 
 	@Test
 	void testDeleteBoard() {
-		BoardVo boardVoOne = new BoardVo();
+		BoardVO boardVoOne = new BoardVO();
 		boardVoOne.setBid(59);
 		boardMapper.deleteBoard(boardVoOne);
-		for(BoardVo boardVo : boardMapper.selectList()) {
+		for(BoardVO boardVo : boardMapper.selectList()) {
 			log.info("=====확인=====================" +  boardVo);			
 		}	
 	}
 	
 	@Test
 	void testRead() {
-		BoardVo boardVo = boardMapper.read(1);
+		BoardVO boardVo = boardMapper.read(1);
 		log.info("=====확인=====================" + boardVo);
 	}
 	
 	@Test
 	void testUpdateBoard() {
-		BoardVo boardVo = new BoardVo();
+		BoardVO boardVo = new BoardVO();
 		boardVo.setBid(1);
 		boardVo.setBtitle("테스트제목2");
 		boardVo.setBcontent("테스트내용2");
@@ -64,7 +64,7 @@ class BoardMapperTest {
 	
 	@Test
 	void testUpdateHit() {
-		BoardVo boardVo = boardMapper.read(1);
+		BoardVO boardVo = boardMapper.read(1);
 		log.info("=====기존 조회수===== : " + boardVo.getBhit());
 		
 		boardMapper.updateHit(1);
@@ -75,8 +75,8 @@ class BoardMapperTest {
 	
 	@Test
 	void testInsertReply() {
-		boardMapper.insertReply(new BoardVo("답글테스터","답글제목1","답글내용1",1,0,0));
-		for(BoardVo boardVo : boardMapper.selectList()) {
+		boardMapper.insertReply(new BoardVO("답글테스터","답글제목1","답글내용1",1,0,0));
+		for(BoardVO boardVo : boardMapper.selectList()) {
 			log.info("=====확인=====================" +  boardVo);			
 		}	
 	}
@@ -84,10 +84,10 @@ class BoardMapperTest {
 	@Test
 	void testUpdateShape() {
 		//BoardVo boardVo = new BoardVo("답글테스터2","답글제목2","답글내용2",2,0,0);
-		BoardVo boardVo = new BoardVo("답글테스터3","답글제목3","답글내용3",2,0,0);
+		BoardVO boardVo = new BoardVO("답글테스터3","답글제목3","답글내용3",2,0,0);
 		boardMapper.updateShape(boardVo);
 		boardMapper.insertReply(boardVo);
-		for(BoardVo board : boardMapper.selectList()) {
+		for(BoardVO board : boardMapper.selectList()) {
 			log.info("=====확인=====================" +  board);			
 		}
 	}

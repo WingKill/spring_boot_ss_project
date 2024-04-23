@@ -6,16 +6,16 @@ package edu.sejong.ex.vo;
 //DEPTNO NOT NULL NUMBER(2)    
 //DNAME           VARCHAR2(14) 
 //LOC             VARCHAR2(13) 
-public class DeptVo {
+public class DeptVO {
 	private int deptno;
 	private String dname;
 	private String loc;
 	
-	public DeptVo() {
+	public DeptVO() {
 		
 	}
 	
-	public DeptVo(int deptno,String dname,String loc){
+	public DeptVO(int deptno,String dname,String loc){
 		this.deptno = deptno;
 		this.dname = dname;
 		this.loc = loc;

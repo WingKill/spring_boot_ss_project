@@ -24,7 +24,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class EmpVo {
+public class EmpVO {
 	private int empNo;
 	private String ename;
 	private String job;
@@ -34,7 +34,7 @@ public class EmpVo {
 	private String comm;
 	private int deptno;
 	
-	private SalGradeVo salGrade;
+	private SalGradeVO salGrade;
 	
 	public int getRandomNum() {
 		return (int)(Math.random()*6 + 1);

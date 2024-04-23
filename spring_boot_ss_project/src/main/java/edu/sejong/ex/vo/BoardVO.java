@@ -14,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 // 원활한 테스트를 위한 일시적 추가
 @ToString
-public class BoardVo {
+public class BoardVO {
 	private int bid; 
 	private String bname;
 	private String btitle;
@@ -26,7 +26,7 @@ public class BoardVo {
 	private int bindent; // 가로
 
 	// 수정 페이지에서 게시글 입력 버튼을 눌렀을 때 세팅하게 될 데이터들
-	public BoardVo(int bid, String bname, String btitle, String bcontent) {
+	public BoardVO(int bid, String bname, String btitle, String bcontent) {
 		this.bid = bid;
 		this.bname = bname;
 		this.btitle = btitle;
@@ -34,14 +34,14 @@ public class BoardVo {
 	}
 	
 	// 입력 페이지에서 게시글 입력 버튼을 눌렀을 때 세팅하게 될 데이터들
-	public BoardVo(String bname, String btitle, String bcontent) {
+	public BoardVO(String bname, String btitle, String bcontent) {
 		this.bname = bname;
 		this.btitle = btitle;
 		this.bcontent = bcontent;
 	}
 
 	// 답글 입력 페이지에서 답글 입력 버튼을 눌렀을 때 세팅하게 될 데이터들
-	public BoardVo(String bname, String btitle, String bcontent, int bgroup, int bstep, int bindent) {
+	public BoardVO(String bname, String btitle, String bcontent, int bgroup, int bstep, int bindent) {
 		this.bname = bname;
 		this.btitle = btitle;
 		this.bcontent = bcontent;

@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class EmpDeptVoTest {
+class EmpDeptVOTest {
 
 	@Test
 	void test() {
-		EmpDeptVo empDeptVo = new EmpDeptVo();
+		EmpDeptVO empDeptVo = new EmpDeptVO();
 		assertNotNull(empDeptVo);
 	}
 
