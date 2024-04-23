@@ -31,7 +31,13 @@ public class HomeController {
       return "index";
    }
    
+   @GetMapping("/user/userHome")
+   public void userHome() {
+	   log.info("userHome()..");
+   }
    
-   
-
+   @GetMapping("/admin/adminHome")
+   public void adminHome() {
+	   log.info("adminHome()..");
+   }
 }
