@@ -30,9 +30,12 @@ public class UserDetailsVO implements UserDetails {
 	
 	private void setAuthorities(UserVO userVO) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+
 		for(AuthVO authVo : userVO.getAuthorities()) {
 			authorities.add(new SimpleGrantedAuthority(authVo.getAuthority()));
 		}
+		
+		this.authorities = authorities;
 	}
 
 	@Override
@@ -78,6 +81,6 @@ public class UserDetailsVO implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }

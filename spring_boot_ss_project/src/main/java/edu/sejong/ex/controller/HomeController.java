@@ -39,8 +39,7 @@ public class HomeController {
 	   log.info("userHome()..");
    }
    
-  // @GetMapping("/admin/adminHome")
-   @RequestMapping("/admin/adminHome")
+   @GetMapping("/admin/adminHome")
    public void adminHome() {
 	   log.info("adminHome()..");
    }
