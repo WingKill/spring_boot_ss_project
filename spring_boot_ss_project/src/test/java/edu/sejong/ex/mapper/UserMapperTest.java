@@ -25,7 +25,7 @@ class UserMapperTest {
 	
 	@Test
 	void testSelectUserAuthLists() {
-		UserVO user = userMapper.selectUserAuths("admin");
+		UserVO user = userMapper.selectUserAuths("admin3");
 		log.info("유저정보 : "+user);
 		for(AuthVO auth : user.getAuthorities()) {
 			log.info("권한정보 : "+auth);
@@ -34,15 +34,22 @@ class UserMapperTest {
 
 	@Test
 	void testInsertUser() {
-//		UserVO user = new UserVO("admin2","admin2");
-//		log.info("삽입여부 : "+userMapper.insertUser(user));
+		
+//		UserVO user = new UserVO();
+//		user.setUserName("admin2");
+//		user.setPassword(new BCryptPasswordEncoder().encode("admin2"));
+//		user.setEnabled("1");
+//		
+//		userMapper.insertUser(user);
+//		userMapper.insertAuthority(user);
+		
 		UserVO user = new UserVO();
 		user.setUserName("admin3");
 		user.setPassword(new BCryptPasswordEncoder().encode("admin3"));
 		user.setEnabled("1");
 		
 		userMapper.insertUser(user);
-		userMapper.insertAuthority(user);
+		userMapper.insertAuthorityAdmin(user);
 	}
 	
 //	@Test

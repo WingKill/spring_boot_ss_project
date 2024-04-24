@@ -8,7 +8,9 @@ import edu.sejong.ex.vo.UserVO;
 public interface UserMapper {
 	UserVO selectUserAuths(String username);
 
-	public int insertUser(UserVO userVo);
+	public int insertUser(UserVO userVO);
 
-	public void insertAuthority(UserVO userVo);
+	public void insertAuthority(UserVO userVO);
+	
+	public void insertAuthorityAdmin(UserVO userVO);
 }

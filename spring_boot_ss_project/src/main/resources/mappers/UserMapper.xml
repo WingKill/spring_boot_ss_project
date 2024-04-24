@@ -8,24 +8,30 @@
         ]]>       
 	</select>
 	
-	<insert id="insertUser" parameterType="UserVo">
+	<insert id="insertUser" parameterType="UserVO">
     	<![CDATA[
         	insert into users(username, password) values (#{userName},#{password})
         ]]>       
 	</insert>
 	
-	<insert id="insertAuthority" parameterType="UserVo">
+	<insert id="insertAuthority" parameterType="UserVO">
         <![CDATA[
             INSERT INTO authorities(username, authority) VALUES (#{userName}, 'ROLE_USER')
         ]]>
 	</insert>
+	
+	<insert id="insertAuthorityAdmin" parameterType="UserVO">
+        <![CDATA[
+            INSERT INTO authorities(username, authority) VALUES (#{userName}, 'ROLE_ADMIN')
+        ]]>
+	</insert>
 			
-	<resultMap id="authMap" type="AuthVo">
+	<resultMap id="authMap" type="AuthVO">
 		<result column="username" property="userName" />
 		<result column="authority" property="authority" />
 	</resultMap>
 	
-	<resultMap id="userMap" type="UserVo">
+	<resultMap id="userMap" type="UserVO">
 		<id column="username" property="userName"/>
 		<result column="password" property="password"/>
 		<result column="enabled" property="enabled"/>

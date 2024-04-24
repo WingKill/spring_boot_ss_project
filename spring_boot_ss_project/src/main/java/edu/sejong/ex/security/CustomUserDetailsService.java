@@ -24,7 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 		
 		UserVO user = userMapper.selectUserAuths(username);
 		
-		log.warn("load User By UserVo mapper : " + user);
+		log.warn("queried by UserVo mapper : " + user);
 		
 		return user == null ? null : new UserDetailsVO(user);
 	}

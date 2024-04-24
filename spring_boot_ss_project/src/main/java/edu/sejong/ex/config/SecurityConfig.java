@@ -63,7 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.usernameParameter("id")
 			.passwordParameter("pw")
 			//.defaultSuccessUrl("/board/list2")
-			.defaultSuccessUrl("/index")
+			//.defaultSuccessUrl("/index")
+			.defaultSuccessUrl("/")
 			.permitAll(); // 모든 사람에게 허용하겠다는 의미.
 	}
 }
