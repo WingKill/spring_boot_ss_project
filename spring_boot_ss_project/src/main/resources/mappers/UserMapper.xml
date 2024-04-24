@@ -14,7 +14,7 @@
         ]]>       
 	</insert>
 	
-	<insert id="insertAuthorities" parameterType="UserVo">
+	<insert id="insertAuthority" parameterType="UserVo">
         <![CDATA[
             INSERT INTO authorities(username, authority) VALUES (#{userName}, 'ROLE_USER')
         ]]>

@@ -37,8 +37,8 @@ class UserMapperTest {
 //		UserVO user = new UserVO("admin2","admin2");
 //		log.info("삽입여부 : "+userMapper.insertUser(user));
 		UserVO user = new UserVO();
-		user.setUserName("admin2");
-		user.setPassword(new BCryptPasswordEncoder().encode("admin2"));
+		user.setUserName("admin3");
+		user.setPassword(new BCryptPasswordEncoder().encode("admin3"));
 		user.setEnabled("1");
 		
 		userMapper.insertUser(user);
