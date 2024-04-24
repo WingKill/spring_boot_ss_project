@@ -22,12 +22,38 @@ public class UserDetailsVO implements UserDetails {
 	private String password;
 	private List<GrantedAuthority> authorities;
 	
+	// 테스트 코드
+	private String email = "admin@admin.com";
+	private EmpVO emp = null;
+	private CartVO cart = new CartVO();
+	
+	
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public EmpVO getEmp() {
+		return this.emp;
+	}
+	
+	public CartVO getCart() {
+		return this.cart;
+	}
+	
 	public UserDetailsVO(UserVO user) {
 		this.setUsername(user.getUserName());
 		this.setPassword(user.getPassword());
 		this.setAuthorities(user);
 	}
 	
+	public UserDetailsVO(UserVO user, EmpVO empVO) {
+		this.setUsername(user.getUserName());
+		this.setPassword(user.getPassword());
+		this.setAuthorities(user);
+		
+		this.emp = empVO;
+	}
+
 	private void setAuthorities(UserVO userVO) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
