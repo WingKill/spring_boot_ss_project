@@ -13,14 +13,16 @@
 	<p><sec:authentication property="principal.username"/>님 환영합니다</p>
 	<p>이메일 : <sec:authentication property="principal.email"/></p>
 	
-	<p>EmpVO: <sec:authentication property="principal.emp"/></p>
+	<%-- <p>EmpVO: <sec:authentication property="principal.emp"/></p>
 	<p>사용자이름: <sec:authentication property="principal.emp.ename"/></p>
 	<p>사용자월급: <sec:authentication property="principal.emp.sal"/></p>
-	<p>사용자입사일자: <sec:authentication property="principal.emp.hiredate"/></p>
+	<p>사용자입사일자: <sec:authentication property="principal.emp.hiredate"/></p> --%>
 	
-	<p>CartVO: <sec:authentication property="principal.cart"/></p>
+	<%-- <p>CartVO: <sec:authentication property="principal.cart"/></p>
 	<p>물품명 : <sec:authentication property="principal.cart.product"/></p>
-	<p>물품 개수 : <sec:authentication property="principal.cart.count"/></p>
+	<p>물품 개수 : <sec:authentication property="principal.cart.count"/></p> --%>
+	
+	
 	
 	<p><a href="<c:url value="/" />">홈</a></p>
 </body>

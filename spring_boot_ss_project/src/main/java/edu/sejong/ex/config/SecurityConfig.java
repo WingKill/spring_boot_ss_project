@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import edu.sejong.ex.security.CustomNoOpPasswordEncoder;
 import edu.sejong.ex.security.CustomUserDetailsService;
 
 @Configuration
@@ -19,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
-
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
@@ -29,11 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**", "/lib/**");
 	}
 
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+		//return new BCryptPasswordEncoder();
+		return new CustomNoOpPasswordEncoder();
 	}
-
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// 테스트용 유저 만들기(인메모리 방식)
@@ -43,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		.withUser("admin").password("{noop}admin").roles("ADMIN");
 
 		auth.userDetailsService(customUserDetailsService)
-			.passwordEncoder(passwordEncoder()); // 암호화 방식
+			.passwordEncoder(passwordEncoder()); // 암호화 방식 
 	}
 
 	@Override
@@ -53,10 +56,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// 권한 설정
-		http.authorizeRequests().antMatchers("/user/**").hasAnyRole("USER").antMatchers("/admin/**").hasAnyRole("ADMIN")
-				.antMatchers("/board/**").hasAnyRole("ADMIN")
-				// .antMatchers("/company/list").hasAnyRole("ADMIN")
-				.antMatchers("/**").permitAll();
+		http.authorizeRequests()
+			.antMatchers("/user/**").hasAnyRole("USER")
+			.antMatchers("/admin/**").hasAnyRole("ADMIN")
+			.antMatchers("/board/**").hasAnyRole("ADMIN")
+  		 // .antMatchers("/company/list").hasAnyRole("ADMIN")
+			.antMatchers("/**").permitAll();
 
 		// 스프링 시큐리티가 기본적으로 가지고 있는 로그인 폼을 사용한다는 의미. 기본 설정이다.
 		// http.formLogin();

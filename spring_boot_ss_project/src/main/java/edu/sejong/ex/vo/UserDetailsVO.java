@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import edu.sejong.ex.security.CustomNoOpPasswordEncoder;
 import edu.sejong.ex.vo.AuthVO;
 import edu.sejong.ex.vo.UserVO;
 import lombok.Setter;
@@ -53,7 +55,23 @@ public class UserDetailsVO implements UserDetails {
 		
 		this.emp = empVO;
 	}
+	
+	public UserDetailsVO(EmpVO empVO) {
+		log.info("===");
+		log.info("UserDetailsVO로 들어온 EmpVO : " + empVO);
+		log.info("===");
+		this.setUsername(empVO.getEname());
+		this.setPassword(String.valueOf((empVO.getEmpNo())));
+		this.setAuthorities("ROLE_USER");
+	}
 
+	private void setAuthorities(String authority) {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();	
+		authorities.add(new SimpleGrantedAuthority(authority));
+		this.authorities = authorities;
+	}
+	
+	
 	private void setAuthorities(UserVO userVO) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 

@@ -27,12 +27,17 @@ public class CustomUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		log.warn("load User By UserVO member : " + username);
 		
-		UserVO user = userMapper.selectUserAuths(username);
-		EmpVO empVO = companyMapper.selectEmp("KING"); 
+		//UserVO user = userMapper.selectUserAuths(username);
+		//EmpVO empVO = companyMapper.selectEmp("KING"); 
 		
-		log.warn("queried by UserVO mapper : " + user);
+		//log.warn("queried by UserVO mapper : " + user);
 		
-		return user == null ? null : new UserDetailsVO(user, empVO);
+		EmpVO empVO = companyMapper.selectEmp(username);
+		log.warn("queried by empVO mapper : " + empVO);
+		
+		//return user == null ? null : new UserDetailsVO(user);
+		//return user == null ? null : new UserDetailsVO(user, empVO);
+		return empVO == null ? null : new UserDetailsVO(empVO);
 	}
 	
 }

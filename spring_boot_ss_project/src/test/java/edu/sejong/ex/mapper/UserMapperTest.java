@@ -10,7 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import edu.sejong.ex.security.CustomNoOpPasswordEncoder;
 import edu.sejong.ex.vo.AuthVO;
+import edu.sejong.ex.vo.EmpVO;
 import edu.sejong.ex.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,6 +26,11 @@ class UserMapperTest {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	
+	@Autowired
+	private CompanyMapper companyMapper;
+	
+	
 	@Test
 	void test() {
 		assertNotNull(userMapper);
@@ -64,12 +71,19 @@ class UserMapperTest {
 
 		userMapper.insertUser(user);
 		userMapper.insertAuthority(user);
+
+
 	}
+	
 
 	@Test
 	void testMatcher() {
-		UserVO user = userMapper.selectUserAuths("admin2");
-		boolean isMatch = passwordEncoder.matches("admin2", user.getPassword());
+//		UserVO user = userMapper.selectUserAuths("admin2");
+//		boolean isMatch = passwordEncoder.matches("admin2", user.getPassword());
+//		assertEquals(isMatch, true);
+		
+		EmpVO empVO = companyMapper.selectEmp("KING");
+		boolean isMatch = passwordEncoder.matches("7839", String.valueOf(empVO.getEmpNo()));
 		assertEquals(isMatch, true);
 	}
 
