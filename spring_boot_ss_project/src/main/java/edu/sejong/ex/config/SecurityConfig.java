@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import edu.sejong.ex.security.CustomNoOpPasswordEncoder;
 import edu.sejong.ex.security.CustomUserDetailsService;
+import edu.sejong.ex.security.EmpCustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity // 스프링 시큐리티 필터가 스프링 필터체인에 등록됨.
@@ -20,6 +21,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
+	
+	@Autowired
+	private EmpCustomUserDetailsService empCustomUserDetailsService;
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -45,15 +49,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		.and()
 //		.withUser("admin").password("{noop}admin").roles("ADMIN");
 
-		auth.userDetailsService(customUserDetailsService)
-			.passwordEncoder(passwordEncoder()); // 암호화 방식 
+//		auth.userDetailsService(customUserDetailsService)
+//			.passwordEncoder(passwordEncoder()); // 암호화 방식
+		
+		auth.userDetailsService(empCustomUserDetailsService)
+			.passwordEncoder(passwordEncoder()); // 암호화 방식
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// 우선 CSRF설정을 해제한다.
 		// 초기 개발시만 해주는게 좋다.
-		http.csrf().disable();
+		// http.csrf().disable();
 
 		// 권한 설정
 		http.authorizeRequests()

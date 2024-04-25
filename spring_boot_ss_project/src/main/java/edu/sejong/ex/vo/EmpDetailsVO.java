@@ -14,73 +14,36 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Setter
-public class UserDetailsVO implements UserDetails {
+public class EmpDetailsVO implements UserDetails {
 
-	private String username;
-	private String password;
-	private List<GrantedAuthority> authorities;
-	
-	// 테스트 코드
-	private String email = "admin@admin.com";
 	private EmpVO emp = null;
-	private CartVO cart = new CartVO();
-	
-	
-	public String getEmail() {
-		return this.email;
-	}
-	
-	public EmpVO getEmp() {
-		return this.emp;
-	}
-	
-	public CartVO getCart() {
-		return this.cart;
-	}
-	
-	public UserDetailsVO(UserVO user) {
-		this.setUsername(user.getUserName());
-		this.setPassword(user.getPassword());
-		this.setAuthorities(user);
-	}
-	
-	public UserDetailsVO(UserVO user, EmpVO empVO) {
 		
-		this.setUsername(user.getUserName());
-		this.setPassword(user.getPassword());
-		this.setAuthorities(user);
-		
+	public EmpDetailsVO(EmpVO empVO) {
 		this.emp = empVO;
 		log.info("emp : " + this.emp);
 	}
-		
-	
-	private void setAuthorities(UserVO userVO) {
-		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-		for(AuthVO authVo : userVO.getAuthorities()) {
-			authorities.add(new SimpleGrantedAuthority(authVo.getAuthority()));
-		}
-		
-		this.authorities = authorities;
+	public EmpVO getEmp() {
+		return emp;
 	}
-
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return this.authorities;
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+		return authorities;
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return this.password;		
+		return String.valueOf(emp.getEmpNo());		
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return this.username;
+		return emp.getEname();
 	}
 
 	// 계정이 만료되지 않았는가?

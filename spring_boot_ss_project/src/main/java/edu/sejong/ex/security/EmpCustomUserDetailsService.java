@@ -7,18 +7,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import edu.sejong.ex.mapper.CompanyMapper;
-import edu.sejong.ex.mapper.UserMapper;
+import edu.sejong.ex.vo.EmpDetailsVO;
 import edu.sejong.ex.vo.EmpVO;
-import edu.sejong.ex.vo.UserDetailsVO;
-import edu.sejong.ex.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class CustomUserDetailsService implements UserDetailsService{
-	
-	@Autowired
-	private UserMapper userMapper;
+public class EmpCustomUserDetailsService implements UserDetailsService{
 	
 	@Autowired
 	private CompanyMapper companyMapper;
@@ -27,14 +22,10 @@ public class CustomUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		log.warn("load User By UserVO member : " + username);
 		
-		UserVO user = userMapper.selectUserAuths(username);
-		
-		EmpVO empVO = companyMapper.selectEmp("KING"); 
-		
-		log.warn("queried by UserVO mapper : " + user);
-		
-		//return user == null ? null : new UserDetailsVO(user);
-		return user == null ? null : new UserDetailsVO(user, empVO);
+		EmpVO empVO = companyMapper.selectEmp(username);
+		log.warn("queried by empVO mapper : " + empVO);
+
+		return empVO == null ? null : new EmpDetailsVO(empVO);
 	}
 	
 }

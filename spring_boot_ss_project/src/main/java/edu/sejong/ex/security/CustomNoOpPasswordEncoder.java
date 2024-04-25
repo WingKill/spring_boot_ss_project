@@ -1,6 +1,5 @@
 package edu.sejong.ex.security;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
