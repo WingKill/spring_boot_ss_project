@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.sejong.ex.mapper.BoardMapper;
 import edu.sejong.ex.page.Criteria;
@@ -52,6 +53,7 @@ public class BoardServiceImpl implements BoardService {
 	// 댓글 관련
 	
 	
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void writeReply(BoardVO boardVo) {
 		log.info("writeReply()..");
