@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-class BoardVoTest {
+class BoardVOTest {
 
 	@Test
 	void test() {
-		BoardVo boardVo = new BoardVo();
+		BoardVO boardVo = new BoardVO();
 		boardVo.setBid(1);
 		assertNotNull(boardVo);
 		log.info("주소 : " + boardVo);

@@ -5,22 +5,22 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.sejong.ex.page.Criteria;
-import edu.sejong.ex.vo.BoardVo;
+import edu.sejong.ex.vo.BoardVO;
 
 @Mapper
 public interface BoardMapper {
-	List<BoardVo> selectList();
-	int insertBoard(BoardVo boardVo);
-	int deleteBoard(BoardVo boardVo);
-	BoardVo read(int bnum);
-	int updateBoard(BoardVo boardVo);
+	List<BoardVO> selectList();
+	int insertBoard(BoardVO boardVo);
+	int deleteBoard(BoardVO boardVo);
+	BoardVO read(int bnum);
+	int updateBoard(BoardVO boardVo);
 	int updateHit(int bnum);
 	
 	// 댓글 관련
-	int updateShape(BoardVo boardVo);
-	int insertReply(BoardVo boardVo);
+	int updateShape(BoardVO boardVo);
+	int insertReply(BoardVO boardVo);
 	
 	// 페이징 관련
-	List<BoardVo> selectListWithPaging(Criteria cri);
+	List<BoardVO> selectListWithPaging(Criteria cri);
 	int selectTotalCount();
 }

@@ -2,29 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.sejong.ex.mapper.BoardMapper">
-	<select id="selectList" resultType="BoardVo"><!-- edu.sejong.ex.vo.BoardVo -->
+	<select id="selectList" resultType="BoardVO"><!-- edu.sejong.ex.vo.BoardVO -->
     	<![CDATA[
         	SELECT * FROM MVC_BOARD ORDER BY bgroup desc, bstep asc
         ]]>
 	</select>
-	<select id="read" resultType="BoardVo">
+	<select id="read" resultType="BoardVO">
     	<![CDATA[
         	select*from MVC_BOARD where bid=#{bnum}
         ]]>
 	</select>
-	<insert id="insertBoard" parameterType="BoardVo">
+	<insert id="insertBoard" parameterType="BoardVO">
 	    <![CDATA[
         	insert into mvc_board (bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent) 
         	values (mvc_board_seq.nextval,#{bname},#{btitle},#{bcontent},sysdate,0,mvc_board_seq.currval,0,0)
         ]]>
 	</insert>
-	<update id="updateBoard" parameterType="BoardVo">
+	<update id="updateBoard" parameterType="BoardVO">
 		<![CDATA[
         	update mvc_board set btitle=#{btitle}, bcontent=#{bcontent} where bid=#{bid}
         ]]>
 	</update>
 
-	<delete id="deleteBoard" parameterType="BoardVo">
+	<delete id="deleteBoard" parameterType="BoardVO">
 		 <![CDATA[
         	delete from mvc_board where bid = #{bid}
         ]]>
@@ -38,21 +38,21 @@
 	</update>
 
 	<!-- 댓글 입력. 최신 댓글은 언제나 게시글 바로 아래에 위치한다. -->
-	<insert id="insertReply" parameterType="BoardVo">
+	<insert id="insertReply" parameterType="BoardVO">
 	    <![CDATA[
         	insert into mvc_board (bid, bname, btitle, bcontent, bdate, bgroup, bstep, bindent) 
 			values (mvc_board_seq.nextval, #{bname} , #{btitle} , #{bcontent} , sysdate, #{bgroup}, #{bstep}+1 , #{bindent}+1 )
         ]]>
 	</insert>
 	<!-- 기존에 작성되어 있는 댓글들의 bstep을 수정하는 작업 -->
-	<update id="updateShape" parameterType="BoardVo">
+	<update id="updateShape" parameterType="BoardVO">
 		<![CDATA[
         	update mvc_board set bstep = bstep + 1 where bgroup = #{bgroup} and bstep > #{bstep}
         ]]>
 	</update>
 
 	<!-- 페이징 -->
-	<select id="selectListWithPaging" resultType="BoardVo"><!-- edu.sejong.ex.vo.BoardVo -->
+	<select id="selectListWithPaging" resultType="BoardVO"><!-- edu.sejong.ex.vo.BoardVO -->
     	<![CDATA[
         	select * from 
         	(
@@ -67,7 +67,7 @@
 			where rnum > (#{pageNum}-1) * #{amount}
         ]]>
 	</select>
-	<select id="selectTotalCount" resultType="int"><!-- edu.sejong.ex.vo.BoardVo -->
+	<select id="selectTotalCount" resultType="int"><!-- edu.sejong.ex.vo.BoardVO -->
     	<![CDATA[
         	SELECT count(*) FROM MVC_BOARD
         ]]>

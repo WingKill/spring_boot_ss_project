@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.sejong.ex.mapper.BoardMapper;
-import edu.sejong.ex.vo.BoardVo;
+import edu.sejong.ex.vo.BoardVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -29,9 +29,9 @@ class PageVoTest {
 		Criteria criteria = new Criteria();
 		assertNotNull(criteria);		
 
-		List<BoardVo> boards = boardMapper.selectListWithPaging(criteria);
+		List<BoardVO> boards = boardMapper.selectListWithPaging(criteria);
 
-		for (BoardVo board : boardMapper.selectListWithPaging(criteria)) {
+		for (BoardVO board : boardMapper.selectListWithPaging(criteria)) {
 			log.info("==확인==" + board);
 		}
 
@@ -40,7 +40,7 @@ class PageVoTest {
 
 		boards = boardMapper.selectListWithPaging(criteria);
 
-		for (BoardVo board : boards) {
+		for (BoardVO board : boards) {
 			log.info("2차 확인 : " + board);
 		}
 

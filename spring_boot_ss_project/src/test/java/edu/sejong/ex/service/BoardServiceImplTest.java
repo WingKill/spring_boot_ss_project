@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.sejong.ex.page.Criteria;
-import edu.sejong.ex.vo.BoardVo;
+import edu.sejong.ex.vo.BoardVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -24,38 +24,38 @@ class BoardServiceImplTest {
 	
 	@Test
 	void testShowList() {
-		for(BoardVo boardVo : boardService.showList()) {
+		for(BoardVO boardVo : boardService.showList()) {
 			log.info("=====확인=====================" +  boardVo);
 		}		
 	}
 
 	@Test
 	void testAddBoard() {
-		boardService.addBoard(new BoardVo(59,"1","1","1"));
-		for(BoardVo boardVo : boardService.showList()) {
+		boardService.addBoard(new BoardVO(59,"1","1","1"));
+		for(BoardVO boardVo : boardService.showList()) {
 			log.info("=====확인=====================" +  boardVo);
 		}
 	}
 
 	@Test
 	void testRemoveBoard() {
-		BoardVo boardVoOne = new BoardVo();
+		BoardVO boardVoOne = new BoardVO();
 		boardService.removeBoard(59, boardVoOne);
-		for(BoardVo boardVo : boardService.showList()) {
+		for(BoardVO boardVo : boardService.showList()) {
 			log.info("=====확인=====================" +  boardVo);
 		}
 	}
 
 	@Test
 	void testShowContent() {
-		BoardVo boardVoOne = new BoardVo();
+		BoardVO boardVoOne = new BoardVO();
 		boardVoOne.setBid(1);
 		log.info("=== 확인 === " + boardService.showContent(1));	
 	}
 	
 	@Test
 	void testModifyBoard() {
-		BoardVo boardVo = new BoardVo();
+		BoardVO boardVo = new BoardVO();
 		boardVo.setBid(1);
 		boardVo.setBtitle("테스트제목3");
 		boardVo.setBcontent("테스트내용3");
@@ -65,7 +65,7 @@ class BoardServiceImplTest {
 	
 	@Test
 	void testUpHit() {
-		BoardVo boardVo = boardService.showContent(1);
+		BoardVO boardVo = boardService.showContent(1);
 		log.info("=== 조회전 === " + boardVo.getBhit());
 		boardVo = boardService.showContent(1);
 		log.info("=== 조회후 === " + boardVo.getBhit());	
@@ -73,15 +73,15 @@ class BoardServiceImplTest {
 	
 	@Test
 	void testInsertReply() {
-		boardService.writeReply(new BoardVo("답글테수튕","답글제몱","답글내룡",1,0,0));
-		for(BoardVo boardVo : boardService.showList()) {
+		boardService.writeReply(new BoardVO("답글테수튕","답글제몱","답글내룡",1,0,0));
+		for(BoardVO boardVo : boardService.showList()) {
 			log.info("=====확인=====================" +  boardVo);			
 		}	
 	}
 	
 	@Test
 	void testShowReply() {
-		BoardVo boardVo = new BoardVo();
+		BoardVO boardVo = new BoardVO();
 		boardVo.setBid(2);
 		log.info("=== 확인 === " + boardService.showReply(boardVo));	
 	}
