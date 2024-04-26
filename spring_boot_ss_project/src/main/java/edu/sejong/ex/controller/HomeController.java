@@ -43,4 +43,10 @@ public class HomeController {
    public void adminHome() {
 	   log.info("adminHome()..");
    }
+   
+   @GetMapping("/csrf")
+   public String csrf(Model model) {
+	   log.info("csrf()..");
+	   return "/board/csrf_delete";
+   }
 }
