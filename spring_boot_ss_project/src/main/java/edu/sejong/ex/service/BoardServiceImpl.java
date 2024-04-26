@@ -52,9 +52,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 댓글 관련
 	
-	
-	@Transactional(rollbackFor = Exception.class)
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void writeReply(BoardVO boardVo) {
 		log.info("writeReply()..");
 		boardMapper.updateShape(boardVo);
